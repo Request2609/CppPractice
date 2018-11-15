@@ -1,25 +1,25 @@
 /*************************************************************************
-	> File Name: 111.cpp
+	> File Name: func.cpp
 	> Author: 
 	> Mail: 
-	> Created Time: Fri 02 Nov 2018 07:50:17 AM PDT
+	> Created Time: Sat 03 Nov 2018 09:13:04 PM PDT
  ************************************************************************/
 
 #include<iostream>
+#include<string>
 using namespace std;
 
-namespace test{
-template<typename T>
-    T min(T a,T b){
-        
-        return a>b?a:b ;
+class Compare{
+
+public:
+    bool operator()(int a,int b ){
+        return a > b ;
     }
-}
+};
 int main(){
     
-    int a = 4 ;
-    int b = 5 ;
-    int c = min(a,b);
-    cout<<c<<endl ;
+    Compare com ;
+    bool val = com(1,4);
+    cout<<val<<endl;
 
 }
