@@ -2,38 +2,58 @@
 	> File Name: 124.cpp
 	> Author: 
 	> Mail: 
-	> Created Time: Sat 20 Oct 2018 10:39:58 PM PDT
+	> Created Time: Tue 27 Nov 2018 03:58:45 AM PST
  ************************************************************************/
 
 #include<iostream>
-#include<string.h>
 using namespace std;
-
-class ob1{
-    static ob1 s ;
-
-public :
-    static ob1 getOb1();
-private:
-    ob1();
-    int id ;
-    char name[100];
+class C{
+public:
+    C(){
+        cout<<"C"<<endl;
+    }
+    ~C(){
+        cout<<"~C"<<endl;
+    }
+};
+class A{
+public:
+    A(){
+        cout<<"A"<<endl;
+    }
+    ~A(){
+        cout<<"~A"<<endl;
+    }
+    void say(){
+        cout<<"hello world!"<<endl;
+    }
 };
 
-ob1 ob1::getOb1(){
-
-    return s ;
-}
-ob1::ob1(){
-
-    strcpy(name ,"changke");
-    id = 1;
-    cout<<"chang ke bei chuang jian!"<<endl;
-}
-
-
-int main(){
-
-    ob1::getOb1();
+class B:public A,public C{
     
+public:
+    B(){
+
+        cout<<"B"<<endl ;
+    }
+    ~B(){
+        cout<<"~B"<<endl ;
+    }
+};
+
+class D:public B{
+    
+public:
+    D(){
+        cout<<"D"<<endl;
+    }
+    ~D(){
+        cout<<"~D"<<endl;
+    }
+};
+int main(){
+  
+    D *d = new D();
+    d->say();
+    delete(d);
 }

@@ -1,55 +1,48 @@
 /*************************************************************************
-	> File Name: client.cpp
+	> File Name: server.cpp
 	> Author: 
 	> Mail: 
-	> Created Time: Wed 14 Nov 2018 12:21:39 AM PST
+	> Created Time: 2018年11月13日 星期二 19时25分02秒
  ************************************************************************/
-
-#include<iostream>
-#include<stdio.h>
-void str_cli(FILE*fd,int sockfd);
-using namespace std;
 #include"unp.h"
-int main(int argc,char ** argv){
-    
-    int sockfd ;
-    struct sockaddr_in servaddr;
-    if(argc !=  2){
-        cout<<"input error,there has two arguments"<<endl ;
-        exit(0);
-    }
-    sockfd = socket(AF_INET, SOCK_STREAM,0);
-    
-    if(sockfd < 0){
-        cout<<"build socket error!"<<endl ;
+#include<iostream>
+using namespace std;
+int main(int argc,char**argv){
+
+    int sockfd ,n ;
+    char recvline[1000];
+    struct sockaddr_in serv;
+    if(argc != 2){
+     cout<<"输入格式不对" <<endl;
         return 0 ;
     }
-
-    bzero(&servaddr,sizeof(servaddr));
-    servaddr.sin_family= AF_INET ;
-    servaddr.sin_port = htons(2345);
-    int ss = inet_pton(AF_INET,argv[1],&servaddr.sin_addr);
-    if(ss < 0){
-        cout<<"inet_pton error!"<<endl ;
+    sockfd= socket(AF_INET,SOCK_STREAM,0);
+    if(sockfd<0){
+        cout<<"socket 出错"<<endl;
         return 0 ;
     }
-    ss = connect(sockfd, (struct sockaddr*)&servaddr,sizeof(sockaddr));
-    str_cli(stdin,sockfd);
-    exit(0);
-}
-
-void str_cli(FILE*fd , int sockfd){
-    char sendline[101],recvline[101];
-    while(fgets(sendline,100,fd)!= NULL){
-
-        int ss = write(sockfd,sendline,strlen(sendline));
-        if(ss< 0){
-            cout<<"write error!"<<endl ;
-            return ;
-        }
-        if(readline(sockfd,recvline,100)==0){
-            cout<<"str_cli:server terminaled peerematurely"<<endl;
-        }
-        fputs(recvline,stdout);
+    bzero(&serv,sizeof(serv));
+    serv.sin_family = (AF_INET);
+    serv.sin_port  = htons(5678);
+    if(inet_pton(AF_INET,argv[1],&serv.sin_addr)<=0){
+        cout<<"出现错误"<<endl;
+        return 0 ;
     }
+    if(connect(sockfd,(struct sockaddr*)&serv,sizeof(serv))< 0){
+        cout<<"connect 出现错误"<<endl;
+        return 0;
+    }
+    while((n =read(sockfd,recvline,100))>0){
+        recvline[n-1]='\0';
+        if(fputs(recvline,stdout) == EOF){
+            cout<<"读取出错"<<endl ;
+            return  0 ;
+        }
+        if(n< 0){
+            cout<<"读取完毕"<<endl ;
+            return 0 ;
+        }
+    }
+    cout<<recvline<<endl ;
 }
+

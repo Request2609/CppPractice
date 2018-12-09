@@ -1,9 +1,8 @@
 /*************************************************************************
-	> File Name: 1.cpp
-	> Author: ma6174
-	> Mail: ma6174@163.com 
-	> Created Time: Fri 16 Nov 2018 03:44:33 AM PST
+	> File Name: 145.c
+	> Author: 
+	> Mail: 
+	> Created Time: Tue 27 Nov 2018 11:47:32 PM PST
  ************************************************************************/
 
-#include<iostream>
-
+#include<stdio.h>

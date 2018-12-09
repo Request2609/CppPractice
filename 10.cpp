@@ -2,39 +2,31 @@
 	> File Name: 10.cpp
 	> Author: 
 	> Mail: 
-	> Created Time: Sat 20 Oct 2018 06:24:33 AM PDT
+	> Created Time: Thu 15 Nov 2018 12:11:01 AM PST
  ************************************************************************/
 
 #include<iostream>
-#include<string.h>
 using namespace std;
 
-class Person{
+#include <iostream>
+#include <vector>
+#include <string>
+#include <functional>
+#include "thread_pool.h"
+#include <unistd.h>
 
-private:
-    char addr[100] ;
-    char name[100];
-public: 
-    Person(const char* name1 ,const char* addr1){
-    
-        strcpy(name,name1);
-        strcpy(addr,addr1);
-    }
-    void getinfo(){
-        printf("%-10s%-10s",name,addr);
-    }
+void fun(std::string s)
+{
+    std::cout<<s<<std::endl;
+}
 
-};
-int main(){
-    
-    char  name[100];
-    char addr[100];
-    cout<<"Input name:"<<endl;
-    scanf("%[^\n]",name);
-    getchar();
-    cout<<"Input addr:"<<endl ;
-    scanf("%[^\n]",addr);
-    Person p(name,addr) ;
-    p.getinfo();   
-    cout<<endl;
+int main(int argc,char **argv)
+{
+  netlib::ThreadPool pool(10);
+  pool.start();
+  while(1)
+  {
+    pool.append(std::bind(fun,std::string("hello")));
+  }  
+  return 0;
 }

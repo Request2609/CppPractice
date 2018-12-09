@@ -1,15 +1,17 @@
-/*************************************************************************
-	> File Name: 11.cpp
-	> Author: 
-	> Mail: 
-	> Created Time: Sun 14 Oct 2018 05:31:49 AM PDT
- ************************************************************************/
-
-#include<iostream>
-using namespace std;
+#include"string.h"
 int main(){
-
-    string s ;
-    getline(cin,s);
+    
+    mystring s ;
+    s="changke";
     cout<<s<<endl;
+    if(s>"liang"){
+        cout<<s;
+        cout<<">"<<"liang"<<endl;
+    }
+    else{
+        cout<<s<<"<"<<"liang"<<endl;
+    }
+    cout<<s<<endl ;
+    cin>>s;
+    cout<<"s:"<<s<<endl;
 }

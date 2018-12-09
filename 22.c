@@ -1,9 +1,14 @@
 /*************************************************************************
-	> File Name: 1.cpp
-	> Author: ma6174
-	> Mail: ma6174@163.com 
-	> Created Time: Fri 16 Nov 2018 03:44:33 AM PST
+	> File Name: 22.c
+	> Author: 
+	> Mail: 
+	> Created Time: Sun 18 Nov 2018 09:17:10 PM PST
  ************************************************************************/
 
-#include<iostream>
+#include<stdio.h>
 
+int main(){
+
+    int a[4]={1,2,3,4};
+
+}

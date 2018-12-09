@@ -1,0 +1,11 @@
+= Start
+@ /usr/lib/x86_64-linux-gnu/libstdc++.so.6:(_Znwm+0x18)[0x7f1d6d2461a8] + 0x562151b612b0 0x1
+@ /lib/x86_64-linux-gnu/libc.so.6:(_IO_file_doallocate+0x8c)[0x7f1d6cc2818c] + 0x562151b612d0 0x400
+@ /usr/lib/x86_64-linux-gnu/libstdc++.so.6:(_Znwm+0x18)[0x7f1d6d2461a8] + 0x562151b616e0 0x18
+@ /usr/lib/x86_64-linux-gnu/libstdc++.so.6:(_Znwm+0x18)[0x7f1d6d2461a8] + 0x562151b61700 0x1
+@ /usr/lib/x86_64-linux-gnu/libstdc++.so.6:(_Znwm+0x18)[0x7f1d6d2461a8] + 0x562151b61720 0x18
+@ ./test:[0x5621509b9ac5] - 0x562151b61700
+@ ./test:[0x5621509b9a93] - 0x562151b61720
+@ ./test:[0x5621509b9ac5] - 0x562151b612b0
+@ ./test:[0x5621509b9a93] - 0x562151b616e0
+= End
